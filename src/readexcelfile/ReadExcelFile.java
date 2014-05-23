@@ -1,20 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package readexcelfile;
 
 import java.io.*;
 import jxl.*;
 
-
-
 /**
- *
  * @author racorrea
- *
  */
 public class ReadExcelFile {
 
@@ -24,23 +14,17 @@ public class ReadExcelFile {
 
         try {
             Workbook archivoExcel = Workbook.getWorkbook(new File(archivoDestino));
-            System.out.println("Número de Hojas\t"+ archivoExcel.getNumberOfSheets());
-            for (int sheetNo = 0; sheetNo < archivoExcel.getNumberOfSheets(); sheetNo++) // Recorre 
-            // cada    
-            // hoja                                                                                                                                                       
-            {
+            System.out.println("Número de Hojas = "+ archivoExcel.getNumberOfSheets());
+            for (int sheetNo = 0; sheetNo < archivoExcel.getNumberOfSheets(); sheetNo++){
                 Sheet hoja = archivoExcel.getSheet(sheetNo);
                 int numColumnas = hoja.getColumns();
                 int numFilas = hoja.getRows();
                 String data;
-                System.out.println("Nombre de la Hoja\t" + archivoExcel.getSheet(sheetNo).getName());
-                for (int fila = 0; fila < numFilas; fila++) { // Recorre cada 
-
-                    for (int columna = 0; columna < numColumnas; columna++) { // Recorre                                                                                
-
+                System.out.println("Nombre de la Hoja = " + archivoExcel.getSheet(sheetNo).getName());
+                for (int fila = 0; fila < numFilas; fila++) {
+                    for (int columna = 0; columna < numColumnas; columna++) {                                                                             
                         data = hoja.getCell(columna, fila).getContents();
                         System.out.print(data + " ");
-
                     }
                     System.out.println("\n");
                 }
@@ -50,11 +34,8 @@ public class ReadExcelFile {
         }
 
     }
-
-
     public static void main(String[] args) {
         ReadExcelFile excel = new ReadExcelFile(); 
         excel.leerArchivoExcel(file); 
     }
-    
 }
